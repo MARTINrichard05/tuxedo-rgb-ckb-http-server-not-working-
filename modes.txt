@@ -1,0 +1,24 @@
+
+## CUSTOM
+Value: `0`
+
+## BREATHE
+Value: `1`
+
+## CYCLE
+Value: `2`
+
+## DANCE
+Value: `3`
+
+## FLASH
+Value: `4`
+
+## RANDOM_COLOR
+Value: `5`
+
+## TEMPO
+Value: `6`
+
+## WAVE
+Value: `7`
