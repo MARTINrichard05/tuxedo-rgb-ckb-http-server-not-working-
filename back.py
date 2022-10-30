@@ -6,7 +6,6 @@ import colorsys
 
 # YOU HAVE TO STORE NEW CUSTOM VALUES IN ONLY ONE SECTION NAMED "IDK"
 
-refresh_interval = 0
 
 
 class main:
@@ -24,6 +23,7 @@ class main:
                           'state': '1',
                           'mode': '0',
                           'delay': '1'}
+        self.readconfig()
         while True:
             time.sleep(0.001)
             timerfile += 1
