@@ -1,8 +1,9 @@
 import time
-import keyboard
+import tuxedo_keyboard
 import configparser
 import ast
 import colorsys
+from multiprocessing import Process
 
 # YOU HAVE TO STORE NEW CUSTOM VALUES IN ONLY ONE SECTION NAMED "IDK"
 
@@ -22,17 +23,21 @@ class main:
                           'backlight': '100',
                           'state': '1',
                           'mode': '0',
-                          'delay': '1'}
+                          'delay': '1',
+                          'daemon_status': '1',}
         self.readconfig()
         while True:
-            time.sleep(0.001)
+            time.sleep(0.01)
             timerfile += 1
             timerleds += 1
             self.generaltimer += 1
-            if timerleds == 30:
+            if self.cfg_ready['daemon_status'] == '0':
+                exit(0)
+
+            if timerleds == 4:
                 timerleds = 0
                 self.refreshleds()  # refresh the leds , change the val to change the fps.
-            if timerfile == 2000:
+            if timerfile == 100:
                 timerfile = 0
                 self.readconfig()  # every 2 secs I reload the config file from the disk
 
@@ -80,6 +85,8 @@ class main:
                     keyboard.setcolor(keyboard.rgb_to_hex((int(color_list[self.buffer['current_color']][0]),
                                                            int(color_list[self.buffer['current_color']][1]),
                                                            int(color_list[self.buffer['current_color']][2]))))
+        elif self.cfg_ready['mode'] == '3':
+            print('not yet ready')
 
 
 a = main()
